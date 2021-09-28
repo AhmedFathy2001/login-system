@@ -10,37 +10,46 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 
-<body style="background-color: #24353F">
+<body class="bg-dark text-light">
     <div class="container w-50">
-        <div class="username-box input-style">
-            <label for="username">Username</label>
-            <input type="text" id="username" class="form-control">
-            <div class="invalid-feedback">
-                This username is taken, please enter another username.
-            </div>
-        </div>
-        <div class="email-box input-style">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control">
-            <div class="invalid-feedback">
-                This email is taken, please enter another email.
-            </div>
-        </div>
-        <div class="password-box row mb-3">
-            <div class="col-6"><label for="password">Password</label>
-                <input type="password" id="password" class="form-control">
+        <div id="container" class=" mb-3">
+            <div class="username-box input-style">
+                <input type="text" id="username" class="form-control" placeholder="Enter a Username">
                 <div class="invalid-feedback">
-                    Passwords don't match
+                    This username is taken, please enter another username.
                 </div>
             </div>
-            <div class="col-6"><label for="passwordConfirmation">Confirm your Password</label>
-                <input type="password" id="passwordConfirmation" class="form-control">
+            <div class="email-box input-style">
+                <input type="email" id="email" class="form-control" placeholder="Enter an Email">
                 <div class="invalid-feedback">
-                    Passwords don't match
+                    This email is taken, please enter another email.
                 </div>
             </div>
+            <div class="password-box row mb-3">
+                <div class="col-6">
+                    <input type="password" id="password" class="form-control" placeholder="Enter a Password">
+                    <div class="invalid-feedback">
+                        Passwords don't match
+                    </div>
+                </div>
+                <div class="col-6">
+                    <input type="password" id="passwordConfirmation" class="form-control" placeholder="Re-Enter your Password">
+                    <div class="invalid-feedback">
+                        Passwords don't match
+                    </div>
+                </div>
+            </div>
+            <p class="text-center">Already have an account?
+                <a href="index.html ">Sign in instead!</a>
+            </p>
         </div>
-        <button id="register" class="btn btn-primary">Register Now!</button>
+        <div class="invalid-feedback ms-0 text-center mb-3">
+            All fields are required!
+        </div>
+        <div class="w-100 mx-auto d-flex justify-content-center">
+            <button id="register" class="btn btn-primary">Register Now!</button>
+        </div>
+
     </div>
     <script src="./scripts/common.js"></script>
     <script src="./scripts/signup.js"></script>

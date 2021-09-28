@@ -1,0 +1,101 @@
+/* input {
+    margin: 1rem;
+}
+*/
+
+
+/* .invalid-feedback {
+    font-size: 1.1rem;
+} */
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+html,
+body {
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+}
+
+.container {
+    height: 100vh;
+    align-content: center;
+}
+
+.card {
+    position: relative;
+    height: 370px;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-header h3 {
+    color: white;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border: 0 !important;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+    color: white;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.remember label {
+    width: 30%;
+}
+
+.login_btn {
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.links {
+    color: white;
+}
+
+.links a {
+    margin-left: 4px;
+}
+
+.card-footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
