@@ -26,8 +26,8 @@ body {
 
 .card {
     position: relative;
-    height: 370px;
-    width: 400px;
+    height: 390px;
+    width: 600px;
     background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -61,16 +61,16 @@ input:focus {
 }
 
 .remember label {
-    width: fit-content;
+    width: 30%;
 }
 
-.login_btn {
+.signup_btn {
     color: black;
     background-color: #FFC312;
     width: 100px;
 }
 
-.login_btn:hover {
+.signup_btn:hover {
     color: black;
     background-color: white;
 }
@@ -83,7 +83,12 @@ input:focus {
     margin-left: 4px;
 }
 
-.invalid-feedback span {
-    background-color: #dc3545;
-    color: white;
+@media screen and (max-width:768px) {
+    .responsive-width {
+        width: 100% !important;
+    }
+}
+
+.invalid-feedback {
+    font-size: 1.05rem;
 }
