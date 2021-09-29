@@ -3,9 +3,6 @@ const loginBtn = document.getElementById('login');
 const invalid = document.getElementById('invalid');
 const rememberMeBtn = document.getElementById('remember');
 
-//Checks if theres a current active session, if exists, User will be redirected to the home page
-if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) setTimeout(() => window.location.href = 'home_page.html', 1000);
-
 
 //Login Function checks if the email and password match and exist in the local storage, else throws an error
 function login() {

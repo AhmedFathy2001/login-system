@@ -8,10 +8,6 @@ const passwordVisibilityLabelCf = document.getElementById('passwordVisibilityLab
 const emailFeedback = document.getElementById('emailFeedback');
 let userRegister;
 
-//Checks if there's an existing session, if there is it'll redirect to the home page
-sessionUser = localStorage.getItem('sessionUser') || sessionStorage.getItem('sessionUser');
-!isEmpty(sessionUser) ? setTimeout(() => window.location.href = 'home_page.html', 1000) : false;
-
 // Registration class
 class User {
     constructor(username, email, password, passwordConfirmation) {
@@ -45,9 +41,9 @@ function isEmptyy() {
 //Validation for username and email if any already exists.
 function validate(item, type) {
     let invalid = users.some(u => u[type] == item);
-    type == 'username' && invalid == true ? this.username.classList.add('is-invalid') : this.username.classList.remove('is-invalid');
+    type == 'username' && invalid == true ? this.username.classList.remove('is-invalid') : this.username.classList.add('is-invalid');
     type == 'email' && invalid == true ? (this.email.classList.add('is-invalid'), this.emailFeedback.innerText = 'This email is taken, please enter another email.') : this.email.classList.remove('is-invalid');
-    return !invalid
+    return !invalid;
 }
 
 //Email validation
@@ -83,13 +79,21 @@ function passwordCheck(password, passwordConfirm) {
 //registraition validation
 function registration() {
     if (isEmptyy()) {
-        if (validate(username.value, 'username') && emailValidation(email.value) && validate(email.value, 'email') && passwordCheck(password.value, passwordConfirmation.value)) {
-            allUsers()
-            setTimeout(() => window.location.href = 'index.html', 1000);
+        let x = validate(username.value, 'username');
+        let y = emailValidation(email.value);
+        let z = validate(email.value, 'email');
+        let b = passwordCheck(password.value, passwordConfirmation.value);
+        console.log(x, y, z, b);
+        if (x && y && z && b) {
+            if (validate(username.value, 'username') && emailValidation(email.value) && validate(email.value, 'email') && passwordCheck(password.value, passwordConfirmation.value)) {
+                allUsers()
+                setTimeout(() => window.location.href = 'index.html', 1000);
+            }
+        } else {
+            return;
         }
-    } else {
-        return;
     }
+
 }
 passwordVisibilityCf.addEventListener('change', () => {
     visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)

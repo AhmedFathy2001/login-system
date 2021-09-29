@@ -8,6 +8,9 @@ const passwordVisibility = document.getElementById('passwordVisibility')
 const passwordVisibilityLabel = document.getElementById('passwordVisibilityLabel')
 let sessionUser;
 
+//Checks if theres a current active session, if exists, User will be redirected to the home page
+if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) window.location.href = 'home_page.html';
+
 //Parses the array of users from local storage if exists, else generates a new empty array
 let users = JSON.parse(localStorage.getItem("users")) || [];
 

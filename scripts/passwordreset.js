@@ -1,9 +1,8 @@
 const passwordVisibilityCf = document.getElementById('passwordVisibilityCf')
 const resetBtn = document.getElementById('reset');
 const invalidPassword = document.getElementById('invalid');
-passwordVisibilityCf.addEventListener('change', () => {
-    visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)
-});
+
+
 //Email validation to check if it exists
 function validate() {
     const invalid = users.find(u => u.email == email.value);
@@ -34,6 +33,12 @@ function passwordCheck(password, passwordConfirm) {
     }
 }
 
+//For password visiblity function
+passwordVisibilityCf.addEventListener('change', () => {
+    visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)
+});
+
+//redirects to homepage if reset was successful otherwise throws an error
 resetBtn.addEventListener('click', () => {
     !validate()
     container.classList.add('is-valid');
