@@ -13,7 +13,7 @@ function login() {
     } else {
         container.classList.remove('is-invalid')
         try {
-            const user = users.find(u => u.email == email.value)
+            const user = users.find(u => u.email.toLowerCase() == email.value.toLowerCase())
             if (!user) throw email
             if (user.password != password.value) throw password
             rememberMeBtn.checked ? localStorage.setItem('sessionUser', user.username) : sessionStorage.setItem('sessionUser', user.username)

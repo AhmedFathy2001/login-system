@@ -40,7 +40,7 @@ function isEmptyy() {
 
 //Validation for username and email if any already exists.
 function validate(item, type) {
-    let invalid = users.some(u => u[type] == item);
+    let invalid = users.some(u => u[type].toLowerCase() == item.toLowerCase());
     type == 'username' && invalid == true ? this.username.classList.remove('is-invalid') : this.username.classList.add('is-invalid');
     type == 'email' && invalid == true ? (this.email.classList.add('is-invalid'), this.emailFeedback.innerText = 'This email is taken, please enter another email.') : this.email.classList.remove('is-invalid');
     return !invalid;

@@ -5,7 +5,7 @@ const invalidPassword = document.getElementById('invalid');
 
 //Email validation to check if it exists
 function validate() {
-    const invalid = users.find(u => u.email == email.value);
+    const invalid = users.find(u => u.email.toLowerCase() == email.value.toLowerCase());
     !invalid == true ? email.classList.add('is-invalid') : email.classList.remove('is-invalid');
     if (invalid) {
         passwordCheck(password.value, passwordConfirmation.value) ? (invalid.password = password.value, invalid.passwordConfirmation = passwordConfirmation.value) : false;
