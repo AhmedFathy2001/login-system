@@ -1,0 +1,23 @@
+.card {
+    height: 390px;
+    width: 600px;
+}
+
+.button-control {
+    bottom: 50px;
+}
+
+@media screen and (max-width:768px) {
+    .responsive-width {
+        width: 100% !important;
+    }
+    .invalid-feedback {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #passwordVisibilityLabel {
+        margin-right: 3px;
+    }
+}

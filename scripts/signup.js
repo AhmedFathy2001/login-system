@@ -1,7 +1,16 @@
 const passwordConfirmation = document.getElementById('passwordConfirmation');
 const registerBtn = document.getElementById('register');
 const passwordContainer = document.getElementById('passwordContainer');
+const invalidPassword = document.getElementById('invalidPasswordCf')
+const empty = document.getElementById('empty')
+const passwordVisibilityCf = document.getElementById('passwordVisibilityCf')
+const passwordVisibilityLabelCf = document.getElementById('passwordVisibilityLabelCf')
+const emailFeedback = document.getElementById('emailFeedback');
 let userRegister;
+
+//Checks if there's an existing session, if there is it'll redirect to the home page
+sessionUser = localStorage.getItem('sessionUser') || sessionStorage.getItem('sessionUser');
+!isEmpty(sessionUser) ? setTimeout(() => window.location.href = 'home_page.html', 1000) : false;
 
 // Registration class
 class User {
@@ -14,41 +23,58 @@ class User {
     }
 }
 
-//creates a new user and adds it to the local storage
+//Creates a new user and adds it to the local storage
 function allUsers() {
     userRegister = new User(username.value, email.value, password.value, passwordConfirmation.value);
     users.push(userRegister);
     localStorage.setItem('users', JSON.stringify(users));
 }
+
 //Checks if any of the inputs is empty
 function isEmptyy() {
     if (isEmpty(username.value) || isEmpty(email.value) || isEmpty(password.value) || isEmpty(passwordConfirmation.value)) {
         container.classList.add('is-invalid')
+        empty.innerText = 'All fields are Required!'
+
         return false;
     }
     container.classList.remove('is-invalid')
     return true;
 }
+
 //Validation for username and email if any already exists.
 function validate(item, type) {
     let invalid = users.some(u => u[type] == item);
     type == 'username' && invalid == true ? this.username.classList.add('is-invalid') : this.username.classList.remove('is-invalid');
-    type == 'email' && invalid == true ? this.email.classList.add('is-invalid') : this.email.classList.remove('is-invalid');
+    type == 'email' && invalid == true ? (this.email.classList.add('is-invalid'), this.emailFeedback.innerText = 'This email is taken, please enter another email.') : this.email.classList.remove('is-invalid');
     return !invalid
+}
+
+//Email validation
+let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+function emailValidation(email) {
+    if (emailRegex.test(email)) {
+        this.email.classList.remove('is-invalid');
+        return true;
+    } else {
+        this.emailFeedback.innerText = 'Please enter a valid email'
+        this.email.classList.add('is-invalid');
+        return false;
+    }
 }
 //Password confirmation
 function passwordCheck(password, passwordConfirm) {
     let validator = password.length >= 8 ? true : false;
     if (!validator) {
         this.passwordContainer.classList.add('is-invalid');
+        invalidPassword.innerText = 'Password must be atleast 8 characters long'
         return false;
     } else if (password != passwordConfirm) {
-        this.password.classList.add('is-invalid');
-        this.passwordConfirmation.classList.add('is-invalid');
+        this.passwordContainer.classList.add('is-invalid');
+        invalidPassword.innerText = 'Passwords don\'t match'
         return false;
     } else {
-        this.password.classList.remove('is-invalid');
-        this.passwordConfirmation.classList.remove('is-invalid');
         this.passwordContainer.classList.remove('is-invalid');
         return true;
     }
@@ -57,7 +83,7 @@ function passwordCheck(password, passwordConfirm) {
 //registraition validation
 function registration() {
     if (isEmptyy()) {
-        if (validate(username.value, 'username') && validate(email.value, 'email') && passwordCheck(password.value, passwordConfirmation.value)) {
+        if (validate(username.value, 'username') && emailValidation(email.value) && validate(email.value, 'email') && passwordCheck(password.value, passwordConfirmation.value)) {
             allUsers()
             setTimeout(() => window.location.href = 'index.html', 1000);
         }
@@ -65,6 +91,29 @@ function registration() {
         return;
     }
 }
+passwordVisibilityCf.addEventListener('change', () => {
+    visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)
+});
 
 // Registration button
 registerBtn.addEventListener('click', registration);
+
+//Event listeners to listen to the Enter key to go to the next action
+let elementsArray = [username, email, password, passwordConfirmation]
+for (let i = 0; i < elementsArray.length - 1; i++) {
+    elementsArray[i].addEventListener('keyup', e => {
+        e.stopPropagation()
+        if (e.code == 'Enter') {
+            elementsArray[i + 1].focus();
+        }
+    });
+}
+[window, passwordConfirmation].forEach(element =>
+    element.addEventListener('keyup', e => {
+        e.stopPropagation()
+        if (e.code == 'Enter') {
+            registerBtn.focus();
+            registerBtn.click();
+        }
+    })
+);

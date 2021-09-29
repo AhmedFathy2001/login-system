@@ -8,7 +8,8 @@
     <title>Registeration</title>
     <link rel="stylesheet" href="./style/bootstrap.min.css">
     <link rel="stylesheet" href="./style/all.min.css">
-    <link rel="stylesheet" href="./style/style-reg.css">
+    <link rel="stylesheet" href="./style/common.css">
+    <link rel="stylesheet" href="./style/style-registration.css">
 </head>
 
 <body>
@@ -16,61 +17,56 @@
         <div class="d-flex justify-content-center align-items-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>Sign Up</h3>
+                    <h3 class="text-center">Sign Up</h3>
                 </div>
-                <div class="card-body" id="container">
-                    <div class="input-group form-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text h-100"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" id="username" class="form-control" placeholder="Username">
-                        <div class="invalid-feedback">
-                            This username is taken, please enter another username.
-                        </div>
-                    </div>
-                    <div class="input-group form-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text h-100"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        <input type="text" id="email" class="form-control" placeholder="Email">
-                        <div class="invalid-feedback">
-                            This email is taken, please enter another email.
-                        </div>
-                    </div>
-                    <div class="password-container d-md-flex justify-content-evenly" id="passwordContainer">
-                        <div class="input-group form-group mb-3 w-50 pe-1 ps-0 responsive-width">
+                <div class="card-body">
+                    <div id="container">
+                        <div class="input-group form-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text h-100"><i class="fas fa-lock"></i></span>
+                                <span class="input-group-text h-100"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="password" id="password" class="form-control" placeholder="Password">
-                            <div class="invalid-feedback" id="invalidPassword">
-                                Passwords don't match
+                            <input type="text" id="username" class="form-control" placeholder="Username">
+                            <div class="invalid-feedback">
+                                This username is taken, please enter another username.
                             </div>
                         </div>
-                        <div class="input-group form-group mb-3 w-50 ps-1 pe-0 responsive-width">
+                        <div class="input-group form-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text h-100"><i class="fas fa-lock"></i></span>
+                                <span class="input-group-text h-100"><i class="fas fa-envelope"></i></span>
                             </div>
-                            <input type="password" id="passwordConfirmation" class="form-control" placeholder="Re-enter Password">
-                            <div class="invalid-feedback" id="invalidPasswordCf">
-                                Passwords don't match
+                            <input type="email" id="email" class="form-control" placeholder="Email">
+                            <div class="invalid-feedback" id="emailFeedback"></div>
+                        </div>
+                        <div class="password-container d-md-flex justify-content-evenly" id="passwordContainer">
+                            <div class="input-group form-group mb-3 w-50 pe-md-1 ps-0 responsive-width">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text h-100"><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" id="password" class="form-control position-relative" placeholder="Password">
+                                <input class="d-none" type="checkbox" id="passwordVisibility">
+                                <label for="passwordVisibility" id="passwordVisibilityLabel" class="position-absolute password-invisible"><i class="far fa-eye"></i></label>
+                            </div>
+                            <div class="input-group form-group mb-3 w-50 ps-md-1 pe-0 responsive-width">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text h-100"><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" id="passwordConfirmation" class="form-control position-relative" placeholder="Re-enter Password">
+                                <input class="d-none" type="checkbox" id="passwordVisibilityCf">
+                                <label for="passwordVisibilityCf" id="passwordVisibilityLabelCf" class="position-absolute password-invisible"><i class="far fa-eye"></i></label>
                             </div>
                         </div>
+
+                        <div class="invalid-feedback text-center mb-3" id="invalidPasswordCf"></div>
                     </div>
-                    <div class="invalid-feedback text-center" id="invalidPasswordCf">
-                        Password must be 8 characters or more
+                    <div class="invalid-feedback text-center mt-md-3" id="empty">All fields are Required!</div>
+                    <div class="form-group position-absolute button-control">
+                        <button id="register" class="btn actionbtn">Sign up</button>
                     </div>
 
                 </div>
-                <div class="invalid-feedback ms-0 text-center mb-3">
-                    All fields are required!
-                </div>
-                <div class="form-group d-flex justify-content-center">
-                    <button id="register" class="btn signup_btn">Sign up</button>
-                </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Already have an account ?<a href="./index.html">Sign in!</a>
+                        Already have an account?<a href="./index.html">Sign in!</a>
                     </div>
                 </div>
             </div>

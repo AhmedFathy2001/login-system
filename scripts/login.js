@@ -2,8 +2,12 @@ const passwordConfirmation = document.getElementById('passwordConfirmation');
 const loginBtn = document.getElementById('login');
 const invalid = document.getElementById('invalid');
 const rememberMeBtn = document.getElementById('remember');
+
+//Checks if theres a current active session, if exists, User will be redirected to the home page
 if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) setTimeout(() => window.location.href = 'home_page.html', 1000);
 
+
+//Login Function checks if the email and password match and exist in the local storage, else throws an error
 function login() {
     if (isEmpty(email.value) || isEmpty(password.value)) {
         invalid.innerHTML = '<span>All fields are required!</span>'
@@ -25,3 +29,20 @@ function login() {
 }
 
 loginBtn.addEventListener('click', login);
+
+//Event listeners to listen to the Enter key to go to the next action
+email.addEventListener('keyup', e => {
+    e.stopPropagation()
+    if (e.code == 'Enter') {
+        password.focus();
+    }
+});
+[window, password].forEach(element =>
+    element.addEventListener('keyup', e => {
+        e.stopPropagation()
+        if (e.code == 'Enter') {
+            loginBtn.focus();
+            loginBtn.click();
+        }
+    })
+);
