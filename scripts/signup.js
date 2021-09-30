@@ -41,7 +41,7 @@ function isEmptyy() {
 //Validation for username and email if any already exists.
 function validate(item, type) {
     let invalid = users.some(u => u[type].toLowerCase() == item.toLowerCase());
-    type == 'username' && invalid == true ? this.username.classList.remove('is-invalid') : this.username.classList.add('is-invalid');
+    type == 'username' && invalid == true ? this.username.classList.add('is-invalid') : this.username.classList.remove('is-invalid');
     type == 'email' && invalid == true ? (this.email.classList.add('is-invalid'), this.emailFeedback.innerText = 'This email is taken, please enter another email.') : this.email.classList.remove('is-invalid');
     return !invalid;
 }
@@ -87,6 +87,7 @@ function registration() {
         if (x && y && z && b) {
             if (validate(username.value, 'username') && emailValidation(email.value) && validate(email.value, 'email') && passwordCheck(password.value, passwordConfirmation.value)) {
                 allUsers()
+                pass = localStorage.setItem('pass', 'Registration complete, login now!');
                 setTimeout(() => window.location.href = 'index.html', 1000);
             }
         } else {

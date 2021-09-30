@@ -6,6 +6,7 @@ const password = document.getElementById('password');
 const container = document.getElementById('container');
 const passwordVisibility = document.getElementById('passwordVisibility')
 const passwordVisibilityLabel = document.getElementById('passwordVisibilityLabel')
+let pass;
 let sessionUser;
 
 //Checks if theres a current active session, if exists, User will be redirected to the home page

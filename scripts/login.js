@@ -2,8 +2,28 @@ const passwordConfirmation = document.getElementById('passwordConfirmation');
 const loginBtn = document.getElementById('login');
 const invalid = document.getElementById('invalid');
 const rememberMeBtn = document.getElementById('remember');
+pass = localStorage.getItem('pass');
+const modal = document.getElementById('modal');
+const modalBody = document.getElementById('modalBody')
+if (pass == 'Password has been successfully reset!') {
+    modalAdjust(pass)
+} else if (pass == 'Registration complete, login now!') {
+    modalAdjust(pass)
+} else if (pass == 'Account successfully deleted.') {
+    modalAdjust(pass)
+} else if (pass == 'Log out successful.') {
+    modalAdjust(pass)
+}
 
+function modalAdjust(text) {
+    triggerEvent(modal, 'click');
+    modalBody.innerText = `${text}`
+    localStorage.removeItem('pass')
+}
 
+function triggerEvent(el, evName) {
+    el.dispatchEvent(new CustomEvent(evName, {}));
+}
 //Login Function checks if the email and password match and exist in the local storage, else throws an error
 function login() {
     if (isEmpty(email.value) || isEmpty(password.value)) {

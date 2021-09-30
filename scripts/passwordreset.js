@@ -1,8 +1,6 @@
 const passwordVisibilityCf = document.getElementById('passwordVisibilityCf')
 const resetBtn = document.getElementById('reset');
 const invalidPassword = document.getElementById('invalid');
-
-
 //Email validation to check if it exists
 function validate() {
     const invalid = users.find(u => u.email.toLowerCase() == email.value.toLowerCase());
@@ -12,6 +10,7 @@ function validate() {
         //Figure out how to get the current index the splice according to it (last step)
         users.splice(users.indexOf(invalid), 1, invalid)
         localStorage.setItem('users', JSON.stringify(users))
+        pass = localStorage.setItem('pass', 'Password has been successfully reset!');
     }
     return !invalid;
 }
@@ -41,9 +40,5 @@ passwordVisibilityCf.addEventListener('change', () => {
 //redirects to homepage if reset was successful otherwise throws an error
 resetBtn.addEventListener('click', () => {
     !validate()
-    container.classList.add('is-valid');
-    setTimeout(() => {
-        window.location.href = 'index.html';
-    }, 5000)
-
+    window.location.href = 'index.html';
 })
