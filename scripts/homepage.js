@@ -23,5 +23,3 @@ logout.addEventListener('click', () => {
     localStorage.removeItem('sessionUser');
     pass = localStorage.setItem('pass', 'Log out successful.');
 })
-
-//Logged out Successfully.

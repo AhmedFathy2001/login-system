@@ -40,12 +40,20 @@ function isEmptyy() {
 
 //Validation for username and email if any already exists.
 function validate(item, type) {
-    let invalid = users.some(u => u[type].toLowerCase() == item.toLowerCase());
-    type == 'username' && invalid == true ? this.username.classList.add('is-invalid') : this.username.classList.remove('is-invalid');
-    type == 'email' && invalid == true ? (this.email.classList.add('is-invalid'), this.emailFeedback.innerText = 'This email is taken, please enter another email.') : this.email.classList.remove('is-invalid');
-    return !invalid;
+    let isInvalid = users.some(u => u[type].toLowerCase() == item.toLowerCase());
+    switch (type) {
+        case 'username':
+            isInvalid ? this.username.classList.add('is-invalid') : this.username.classList.remove('is-invalid');
+            break;
+        case "email":
+            if (isInvalid) {
+                this.email.classList.add('is-invalid');
+                this.emailFeedback.innerText = 'This email is taken, please enter another email.';
+            } else this.email.classList.remove('is-invalid');
+            break;
+    }
+    return !isInvalid;
 }
-
 //Email validation
 let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -94,8 +102,8 @@ function registration() {
             return;
         }
     }
-
 }
+
 passwordVisibilityCf.addEventListener('change', () => {
     visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)
 });
