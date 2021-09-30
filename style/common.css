@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 a {
-    color: white;
     text-decoration: none;
     -webkit-transition: .3s;
     -o-transition: .3s;
@@ -9,7 +8,6 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: white;
 }
 
 html,
