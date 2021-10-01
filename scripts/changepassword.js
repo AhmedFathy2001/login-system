@@ -67,7 +67,7 @@ changeBtn.addEventListener('click', () => {
     !validate()
 })
 
-let elementsArray = [username, email, password, passwordConfirmation]
+let elementsArray = [oldPassword, password, passwordConfirmation]
 for (let i = 0; i < elementsArray.length - 1; i++) {
     elementsArray[i].addEventListener('keyup', e => {
         e.stopPropagation()
@@ -80,8 +80,8 @@ for (let i = 0; i < elementsArray.length - 1; i++) {
     element.addEventListener('keyup', e => {
         e.stopPropagation()
         if (e.code == 'Enter') {
-            registerBtn.focus();
-            registerBtn.click();
+            changePw.focus();
+            changePw.click();
         }
     })
 );

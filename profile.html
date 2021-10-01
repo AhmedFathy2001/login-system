@@ -17,11 +17,11 @@
     <div class="container d-flex justify-content-center align-items-center h-100">
         <div class="card d-flex justify-content-center align-items-center text-light">
             <h1 class="mb-5"></h1>
+
             <!-- Button trigger modal -->
             <div>
-                <button type="button" class="btn btn-danger me-3" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete Account
-                </button>
+                <a href="home_page.html" class="btn btn-primary me-3">Home</a><a href="change_password.html" class="btn btn-dark me-3">Change Password</a>
+                <a href="index.html" class="btn actionbtn me-3" id="logout">Logout</a>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered text-dark">
@@ -39,9 +39,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <a href="change_password.html" class="btn btn-dark me-3">Change Password</a>
-                <a href="index.html" class="btn actionbtn" id="logout">Logout</a>
+                </div><button type="button" class="btn btn-danger" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete Account
+                </button>
+
+
             </div>
         </div>
     </div>

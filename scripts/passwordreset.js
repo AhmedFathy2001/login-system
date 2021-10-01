@@ -51,3 +51,22 @@ resetBtn.addEventListener('click', () => {
 passwordVisibilityCf.addEventListener('change', () => {
     visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)
 });
+
+let elementsArray = [email, password, passwordConfirmation]
+for (let i = 0; i < elementsArray.length - 1; i++) {
+    elementsArray[i].addEventListener('keyup', e => {
+        e.stopPropagation()
+        if (e.code == 'Enter') {
+            elementsArray[i + 1].focus();
+        }
+    });
+}
+[window, passwordConfirmation].forEach(element =>
+    element.addEventListener('keyup', e => {
+        e.stopPropagation()
+        if (e.code == 'Enter') {
+            resetBtn.focus();
+            resetBtn.click();
+        }
+    })
+);
