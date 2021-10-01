@@ -80,6 +80,7 @@ function displayAllPosts() {
                     <a class="text-white-50 links"> Delete post</a></li>
             </ul>
             </div>
+            <div class="heart position-absolute bottom-0 end-0"><span class="position-absolute likes d-none"></span></div>
             <div class="image-width position-absolute p-1 pt-2 ms-2">
                 <a href="profile.html"><img class="w-100 rounded-circle border-1" src="./images/user.png" alt="profile picture"></a>
             </div>
@@ -92,7 +93,7 @@ function displayAllPosts() {
     document.getElementById('feed').innerHTML = posts
 }
 
-//<div class="heart position-absolute bottom-0 end-0"><span class="position-absolute likes d-none">${likesCount}</span></div>
+//
 //Adds the liking animation
 function like() {
     const hearts = document.querySelectorAll('div.heart');
