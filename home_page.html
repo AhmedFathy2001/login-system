@@ -7,48 +7,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/bootstrap.min.css">
     <link rel="stylesheet" href="./style/all.min.css">
     <link rel="stylesheet" href="./style/home.css">
 </head>
 
-<body>
-
-    <div class="container d-flex justify-content-center align-items-center h-100">
-        <div class="card d-flex justify-content-center align-items-center text-light">
-            <h1 class="mb-5"></h1>
-            <!-- Button trigger modal -->
-            <div>
-                <button type="button" class="btn btn-danger me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete Account
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered text-dark">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Delete account?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete your account? deleting your account will erase all the data attached to it and it will not be retrieved.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Keep my
-                                    Account</button>
-                                <a href="index.html" class="btn btn-danger" id="delete">Delete Account!</a>
-                            </div>
-                        </div>
+<body class="bg-black">
+    <!-- Button trigger modal -->
+    <div>
+        <button type="button" class="btn btn-danger me-3 d-none" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Delete post
+    </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-dark">
+                <div class="modal-content">
+                    <div class="modal-header" id="modalHeader">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete post?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body" id="modalBody">
+                        Delete post? after deleting the post theres no way to retrieve its data!</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="dismissBtn" data-bs-dismiss="modal">Keep the post</button>
+                        <button class="btn btn-danger" id="delete">Delete post!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar container navbar-expand-lg navbar-dark bg-black justify-content-between fixed-top">
+            <a class="navbar-brand" href="home_page.html">Home</a>
+            <div>
+                <div class="image-width d-inline-block me-3">
+                    <a href="profile.html"><img class="w-100 rounded-circle border-1" src="./images/user.png" alt="profile picture"></a>
                 </div>
                 <a href="index.html" class="btn actionbtn" id="logout">Logout</a>
             </div>
-        </div>
-    </div>
+        </nav>
+        <div class="container text-white p-0" id="container">
+            <div class="position-relative">
+                <div class="image-width position-absolute p-1 pt-2 ms-2">
+                    <a href="profile.html"><img class="w-100 rounded-circle border-1" src="./images/user.png" alt="profile picture"></a>
+                </div>
+                <textarea class="text-white bg-black overflow-auto w-100" maxlength="280" name="newpost" id="newPost" placeholder="What's happening?"></textarea>
+                <button class="btn position-absolute btn-primary rounded-pill px-4 button-position" id="share" disabled>Share</button>
+            </div>
+            <div id="feed">
 
-
-    <script src="./scripts/bootstrap.bundle.js"></script>
-    <script src="./scripts/homepage.js"></script>
+            </div>
+            <script src="./scripts/bootstrap.bundle.js"></script>
+            <script src="./scripts/home.js "></script>
 </body>
 
 </html>

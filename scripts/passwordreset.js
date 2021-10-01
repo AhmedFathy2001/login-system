@@ -1,19 +1,26 @@
 const passwordVisibilityCf = document.getElementById('passwordVisibilityCf')
 const resetBtn = document.getElementById('reset');
 const invalidPassword = document.getElementById('invalid');
+
+
 //Email validation to check if it exists
 function validate() {
     const invalid = users.find(u => u.email.toLowerCase() == email.value.toLowerCase());
     !invalid == true ? email.classList.add('is-invalid') : email.classList.remove('is-invalid');
     if (invalid) {
-        passwordCheck(password.value, passwordConfirmation.value) ? (invalid.password = password.value, invalid.passwordConfirmation = passwordConfirmation.value) : false;
+        if (passwordCheck(password.value, passwordConfirmation.value)) {
+            invalid.password = password.value;
+            invalid.passwordConfirmation = passwordConfirmation.value
+        } else { return false; }
         //Figure out how to get the current index the splice according to it (last step)
         users.splice(users.indexOf(invalid), 1, invalid)
         localStorage.setItem('users', JSON.stringify(users))
         pass = localStorage.setItem('pass', 'Password has been successfully reset!');
+        window.location.href = 'index.html'
     }
     return !invalid;
 }
+
 
 //Password confirmation
 function passwordCheck(password, passwordConfirm) {
@@ -32,13 +39,15 @@ function passwordCheck(password, passwordConfirm) {
     }
 }
 
-//For password visiblity function
-passwordVisibilityCf.addEventListener('change', () => {
-    visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)
-});
+
+
 
 //redirects to homepage if reset was successful otherwise throws an error
 resetBtn.addEventListener('click', () => {
     !validate()
-    window.location.href = 'index.html';
 })
+
+//For password visiblity function
+passwordVisibilityCf.addEventListener('change', () => {
+    visibilityCheck(passwordVisibilityCf, passwordConfirmation, passwordVisibilityLabelCf)
+});

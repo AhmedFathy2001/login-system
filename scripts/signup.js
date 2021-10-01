@@ -8,6 +8,10 @@ const passwordVisibilityLabelCf = document.getElementById('passwordVisibilityLab
 const emailFeedback = document.getElementById('emailFeedback');
 let userRegister;
 
+//Checks if theres a current active session, if exists, User will be redirected to the home page
+if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) window.location.href = 'home_page.html';
+
+
 // Registration class
 class User {
     constructor(username, email, password, passwordConfirmation) {

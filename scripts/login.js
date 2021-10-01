@@ -5,6 +5,11 @@ const rememberMeBtn = document.getElementById('remember');
 pass = localStorage.getItem('pass');
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modalBody')
+
+//Checks if theres a current active session, if exists, User will be redirected to the home page
+if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) window.location.href = 'home_page.html';
+
+
 if (pass == 'Password has been successfully reset!') {
     modalAdjust(pass)
 } else if (pass == 'Registration complete, login now!') {
@@ -17,7 +22,7 @@ if (pass == 'Password has been successfully reset!') {
 
 function modalAdjust(text) {
     triggerEvent(modal, 'click');
-    modalBody.innerText = `${text}`
+    modalBody.innerText = `${text}`;
     localStorage.removeItem('pass')
 }
 

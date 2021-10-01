@@ -19,7 +19,6 @@
     <div class="container">
         <!-- Button trigger modal -->
         <button type="button" class="d-none" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
-
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -48,20 +47,21 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text h-100"><i class="fas fa-envelope"></i></span>
                             </div>
-                            <input type="email" id="email" class="form-control" placeholder="Email">
-
+                            <input type="email" id="email" class="form-control" placeholder=" ">
+                            <span class="spanstyle">Email</span>
                         </div>
                         <div class="input-group form-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text h-100"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" id="password" class="form-control position-relative" placeholder="Password">
+                            <input type="password" id="password" class="form-control position-relative" placeholder=" ">
                             <input class="d-none" type="checkbox" id="passwordVisibility">
+                            <span>Password</span>
                             <label for="passwordVisibility" id="passwordVisibilityLabel" class="position-absolute password-invisible"><i class="far fa-eye"></i></label>
                         </div>
                         <div class="row align-items-center remember">
                             <input type="checkbox" id="remember">
-                            <label for="remember" class="d-inline p-0">Remember Me</label>
+                            <label for="remember" class="">Remember Me</label>
                         </div>
                     </div>
                     <div class="invalid-feedback ms-0 text-center mt-md-3" id="invalid"></div>
@@ -69,7 +69,7 @@
                 <div class="form-group position-absolute button-control">
                     <button id="login" class="btn actionbtn">Login</button>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer mt-5">
                     <div class="d-flex justify-content-center links">
                         Don't have an account?<a href="./signup.html">Sign Up</a>
                     </div>

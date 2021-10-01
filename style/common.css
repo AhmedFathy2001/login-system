@@ -10,6 +10,11 @@ a:hover {
     text-decoration: underline;
 }
 
+.input-group {
+    position: relative;
+    padding: 5px;
+}
+
 html,
 body {
     background-image: url('../images/bg.jpg');
@@ -17,6 +22,33 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
     font-family: 'Numans', sans-serif;
+}
+
+.input-group input~span,
+.input-group .spanstyle {
+    position: absolute;
+    padding-left: 60px;
+    top: 13px;
+    pointer-events: none;
+}
+
+input:focus+input~span,
+input:not(:placeholder-shown)+input~span,
+input:focus+.spanstyle,
+input:not(:placeholder-shown)+.spanstyle {
+    opacity: 1;
+    transform: scale(.9) translateY(-135%) translateX(-10px);
+    color: white;
+}
+
+.input-group input~span,
+.input-group .spanstyle,
+.input-group input {
+    transition: all 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    color: #000;
+    opacity: 0.5;
 }
 
 .container {
