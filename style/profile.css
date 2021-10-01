@@ -26,3 +26,26 @@ body {
     color: black;
     background-color: white;
 }
+
+.wrapping {
+    display: flex;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    width: 300px;
+    justify-content: center;
+}
+
+.btn {
+    width: 140px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media screen and (max-width: 335px) {
+    html {
+        font-size: 14px;
+    }
+    .btn {
+        width: 120px;
+    }
+}
