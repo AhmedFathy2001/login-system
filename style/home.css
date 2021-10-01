@@ -197,7 +197,7 @@ textarea::placeholder {
     cursor: pointer;
     height: 50px;
     width: 50px;
-    background-image: url('https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+    background-image: url('../images/heart_animation.png');
     background-position: left;
     background-repeat: no-repeat;
     background-size: 2900%;
