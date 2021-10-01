@@ -28,10 +28,15 @@ body {
 }
 
 .wrapping {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     white-space: nowrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     width: 300px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 

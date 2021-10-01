@@ -32,11 +32,28 @@ body {
     pointer-events: none;
 }
 
+input:not(:-moz-placeholder-shown)+input~span,
+input:not(:-moz-placeholder-shown)+.spanstyle {
+    opacity: 1;
+    transform: scale(.9) translateY(-135%) translateX(-10px);
+    color: white;
+}
+
+input:not(:-ms-input-placeholder)+input~span,
+input:not(:-ms-input-placeholder)+.spanstyle {
+    opacity: 1;
+    -ms-transform: scale(.9) translateY(-135%) translateX(-10px);
+    transform: scale(.9) translateY(-135%) translateX(-10px);
+    color: white;
+}
+
 input:focus+input~span,
 input:not(:placeholder-shown)+input~span,
 input:focus+.spanstyle,
 input:not(:placeholder-shown)+.spanstyle {
     opacity: 1;
+    -webkit-transform: scale(.9) translateY(-135%) translateX(-10px);
+    -ms-transform: scale(.9) translateY(-135%) translateX(-10px);
     transform: scale(.9) translateY(-135%) translateX(-10px);
     color: white;
 }
@@ -44,8 +61,14 @@ input:not(:placeholder-shown)+.spanstyle {
 .input-group input~span,
 .input-group .spanstyle,
 .input-group input {
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
     transition: all 0.2s;
+    -webkit-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
     transition-timing-function: ease;
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     color: #000;
     opacity: 0.5;
