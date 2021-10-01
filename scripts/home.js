@@ -9,8 +9,8 @@ let pass;
 let postContent = localStorage.getItem('posts') == null ? [] : JSON.parse(localStorage.getItem('posts'));
 let postID = localStorage.getItem('posts') == null ? 0 : JSON.parse(localStorage.getItem('posts'))[0].postID;
 let currentIndex;
-let likesCount = 0;
-let likesArray = localStorage.getItem('likes') == null ? [] : JSON.parse(localStorage.getItem('likes'));
+// let likesCount = 0;
+// let likesArray = localStorage.getItem('likes') == null ? [] : JSON.parse(localStorage.getItem('likes'));
 
 //Displays data on site load
 if (postContent != []) {
@@ -80,7 +80,6 @@ function displayAllPosts() {
                     <a class="text-white-50 links"> Delete post</a></li>
             </ul>
             </div>
-            <div class="heart position-absolute bottom-0 end-0"><span class="position-absolute likes d-none">${likesCount}</span></div>
             <div class="image-width position-absolute p-1 pt-2 ms-2">
                 <a href="profile.html"><img class="w-100 rounded-circle border-1" src="./images/user.png" alt="profile picture"></a>
             </div>
@@ -93,6 +92,7 @@ function displayAllPosts() {
     document.getElementById('feed').innerHTML = posts
 }
 
+//<div class="heart position-absolute bottom-0 end-0"><span class="position-absolute likes d-none">${likesCount}</span></div>
 //Adds the liking animation
 function like() {
     const hearts = document.querySelectorAll('div.heart');
@@ -153,6 +153,7 @@ function addDropDownListener() {
 
     });
 }
+
 
 // function blurIcon() {
 //     dropdown.forEach(element => {
@@ -219,6 +220,11 @@ function deleteModalTrigger() {
 }
 
 deleteBtn.addEventListener('click', () => {
+    if (localStorage.getItem('sessionUser') != postContent[currentIndex].username) {
+        triggerEvent(document.getElementById('dismissBtn'), 'click');
+        alert('Cannot delete post that you didnt create')
+        return;
+    }
     postContent.splice(currentIndex, 1);
     localStorage.setItem('posts', JSON.stringify(postContent));
     displayAllPosts();
