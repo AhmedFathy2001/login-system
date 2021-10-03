@@ -10,9 +10,10 @@ const modalBody = document.getElementById('modalBody')
 //Checks if theres a current active session, if exists, User will be redirected to the home page
 if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) window.location.href = 'home_page.html';
 
-function placeholderFix(type) {
-    const span = document.querySelector(`input[type=${type.type}] ~ .span-animation-selector`)
-    if (type.value == '' || type.value == null) {
+//Input animation fix
+function placeholderFix(input) {
+    const span = document.querySelector(`#${input.id} ~ .span-animation-selector`);
+    if (input.value == '' || input.value == null) {
         span.classList.remove('span-animation');
     } else {
         span.classList.add('span-animation');
@@ -21,10 +22,12 @@ function placeholderFix(type) {
 
 email.addEventListener('keyup', () => {
     placeholderFix(email);
-})
+});
 password.addEventListener('keyup', () => {
     placeholderFix(password);
-})
+});
+
+//checks the pass from local storage (which page did the user come from) to edit the displayed modal
 if (pass == 'Password has been successfully reset!') {
     modalAdjust(pass)
 } else if (pass == 'Registration complete, login now!') {
@@ -44,6 +47,7 @@ function modalAdjust(text) {
 function triggerEvent(el, evName) {
     el.dispatchEvent(new CustomEvent(evName, {}));
 }
+
 //Login Function checks if the email and password match and exist in the local storage, else throws an error
 function login() {
     if (isEmpty(email.value) || isEmpty(password.value)) {

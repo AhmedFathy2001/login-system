@@ -66,6 +66,16 @@ function timeSince(date) {
     return Math.floor(seconds) + "s";
 }
 
+
+let usernameCheck;
+
+function truncate(input) {
+    if (input.length > 8) {
+        return input.substring(0, 8) + '...';
+    }
+    return input;
+};
+
 //Displays all posts from new to old
 function displayAllPosts() {
     let posts = ``;
@@ -86,7 +96,7 @@ function displayAllPosts() {
             <div class="image-width position-absolute p-1 pt-2 ms-2">
                 <a href="profile.html"><img class="w-100 rounded-circle border-1" src="./images/user.png" alt="profile picture"></a>
             </div>
-            <p class="paragraph-style text-white-50"><span class="text-white">${postContent[i].username}</span> <span class="spanunstyled">@${postContent[i].username}</span> · <span>${timeSince(postContent[i].date)} ago</span></p>
+            <p class="paragraph-style text-white-50"><span class="text-white">${truncate(postContent[i].username)}</span> <span class="spanunstyled">@${postContent[i].username}</span> · <span>${timeSince(postContent[i].date)} ago</span></p>
             <pre class="post-content pb-3">${postContent[i].postText}</pre>
             <p class="d-none">${i}</p>
         </div>
@@ -153,6 +163,7 @@ function addDropDownListener() {
 
     });
 }
+
 
 //Closes the drop down of the post when clicked anywhere outside of it
 window.addEventListener('click', (e) => {

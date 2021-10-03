@@ -12,6 +12,19 @@ let userRegister;
 //Checks if theres a current active session, if exists, User will be redirected to the home page
 if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) window.location.href = 'home_page.html';
 
+function placeholderFix(input) {
+    const span = document.querySelector(`#${input.id} ~ .span-animation-selector`);
+    if (input.value == '' || input.value == null) {
+        span.classList.remove('span-animation');
+    } else {
+        span.classList.add('span-animation');
+    }
+}
+[username, email, password, passwordConfirmation].forEach(element => {
+    element.addEventListener('keyup', () => {
+        placeholderFix(element);
+    });
+});
 
 // Registration class
 class User {

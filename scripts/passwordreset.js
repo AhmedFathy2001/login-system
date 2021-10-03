@@ -22,24 +22,19 @@ function validate() {
     return !invalid;
 }
 
-function placeholderFix(type) {
-    const span = document.querySelector(`input[type=${type.type}] ~ .span-animation-selector`)
-    if (type.value == '' || type.value == null) {
+function placeholderFix(input) {
+    const span = document.querySelector(`#${input.id} ~ .span-animation-selector`);
+    if (input.value == '' || input.value == null) {
         span.classList.remove('span-animation');
     } else {
         span.classList.add('span-animation');
     }
 }
-
-email.addEventListener('keyup', () => {
-    placeholderFix(email);
-})
-password.addEventListener('keyup', () => {
-    placeholderFix(password);
-})
-passwordConfirmation.addEventListener('keyup', () => {
-    placeholderFix(passwordConfirmation);
-})
+[email, password, passwordConfirmation].forEach(element => {
+    element.addEventListener('keyup', () => {
+        placeholderFix(element);
+    });
+});
 
 //Password confirmation
 function passwordCheck(password, passwordConfirm) {

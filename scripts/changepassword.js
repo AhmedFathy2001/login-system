@@ -10,6 +10,19 @@ sessionUser = localStorage.getItem('sessionUser') || sessionStorage.getItem('ses
 
 if (isEmpty(sessionUser)) window.location.href = 'home_page.html';
 
+function placeholderFix(input) {
+    const span = document.querySelector(`#${input.id} ~ .span-animation-selector`);
+    if (input.value == '' || input.value == null) {
+        span.classList.remove('span-animation');
+    } else {
+        span.classList.add('span-animation');
+    }
+}
+[oldPassword, password, passwordConfirmation].forEach(element => {
+    element.addEventListener('keyup', () => {
+        placeholderFix(element);
+    });
+});
 
 //Old password validation to check if it exists
 function validate() {

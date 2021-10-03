@@ -185,11 +185,7 @@ textarea::placeholder {
         width: fit-content;
     }
     .paragraph-style .spanunstyled {
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        width: 50px;
-        overflow: hidden;
+        display: none;
     }
 }
 
