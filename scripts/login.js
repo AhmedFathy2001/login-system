@@ -11,10 +11,11 @@ const modalBody = document.getElementById('modalBody')
 if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) window.location.href = 'home_page.html';
 
 function placeholderFix(type) {
+    const span = document.querySelector(`input[type=${type.type}] ~ .span-animation-selector`)
     if (type.value == '' || type.value == null) {
-        type.closest('hidespan').style.display = 'inline-block';
+        span.classList.remove('span-animation');
     } else {
-        type.closest('hidespan').style.display = 'none';
+        span.classList.add('span-animation');
     }
 }
 

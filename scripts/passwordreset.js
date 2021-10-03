@@ -22,6 +22,24 @@ function validate() {
     return !invalid;
 }
 
+function placeholderFix(type) {
+    const span = document.querySelector(`input[type=${type.type}] ~ .span-animation-selector`)
+    if (type.value == '' || type.value == null) {
+        span.classList.remove('span-animation');
+    } else {
+        span.classList.add('span-animation');
+    }
+}
+
+email.addEventListener('keyup', () => {
+    placeholderFix(email);
+})
+password.addEventListener('keyup', () => {
+    placeholderFix(password);
+})
+passwordConfirmation.addEventListener('keyup', () => {
+    placeholderFix(passwordConfirmation);
+})
 
 //Password confirmation
 function passwordCheck(password, passwordConfirm) {
