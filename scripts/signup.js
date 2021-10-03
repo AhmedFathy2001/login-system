@@ -1,4 +1,3 @@
-"use strict";
 const passwordConfirmation = document.getElementById('passwordConfirmation');
 const registerBtn = document.getElementById('register');
 const passwordContainer = document.getElementById('passwordContainer');

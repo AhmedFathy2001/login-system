@@ -1,5 +1,4 @@
 "use strict";
-
 const postText = document.getElementById('newPost');
 const username = localStorage.getItem('sessionUser') || sessionStorage.getItem('sessionUser');
 const shareBtn = document.getElementById('share');
@@ -96,7 +95,7 @@ function displayAllPosts() {
             <div class="image-width position-absolute p-1 pt-2 ms-2">
                 <a href="profile.html"><img class="w-100 rounded-circle border-1" src="./images/user.png" alt="profile picture"></a>
             </div>
-            <p class="paragraph-style text-white-50"><span class="text-white">${truncate(postContent[i].username)}</span> <span class="spanunstyled">@${postContent[i].username}</span> · <span>${timeSince(postContent[i].date)} ago</span></p>
+            <p class="paragraph-style text-white-50"><span class="text-white">${window.innerWidth<768 ? truncate(postContent[i].username):postContent[i].username}</span> <span class="spanunstyled">@${postContent[i].username}</span> · <span>${timeSince(postContent[i].date)} ago</span></p>
             <pre class="post-content pb-3">${postContent[i].postText}</pre>
             <p class="d-none">${i}</p>
         </div>

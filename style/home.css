@@ -175,7 +175,7 @@ textarea::placeholder {
     padding-right: 30px;
 }
 
-@media screen and (max-width:315px) {
+@media screen and (max-width:500px) {
     html {
         font-size: 14px;
     }
@@ -185,7 +185,7 @@ textarea::placeholder {
         width: fit-content;
     }
     .paragraph-style .spanunstyled {
-        display: none;
+        display: none !important;
     }
 }
 
