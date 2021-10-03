@@ -1,3 +1,4 @@
+"use strict";
 const passwordConfirmation = document.getElementById('passwordConfirmation');
 const loginBtn = document.getElementById('login');
 const invalid = document.getElementById('invalid');
@@ -9,7 +10,20 @@ const modalBody = document.getElementById('modalBody')
 //Checks if theres a current active session, if exists, User will be redirected to the home page
 if (!isEmpty(localStorage.getItem('sessionUser')) || !isEmpty(sessionStorage.getItem('sessionUser'))) window.location.href = 'home_page.html';
 
+function placeholderFix(type) {
+    if (type.value == '' || type.value == null) {
+        type.closest('hidespan').style.display = 'inline-block';
+    } else {
+        type.closest('hidespan').style.display = 'none';
+    }
+}
 
+email.addEventListener('keyup', () => {
+    placeholderFix(email);
+})
+password.addEventListener('keyup', () => {
+    placeholderFix(password);
+})
 if (pass == 'Password has been successfully reset!') {
     modalAdjust(pass)
 } else if (pass == 'Registration complete, login now!') {

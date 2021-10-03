@@ -1,3 +1,4 @@
+"use strict";
 const passwordVisibilityCf = document.getElementById('passwordVisibilityCf')
 const resetBtn = document.getElementById('reset');
 const invalidPassword = document.getElementById('invalid');

@@ -1,160 +1,164 @@
-@import url('https://fonts.googleapis.com/css?family=Numans');
-a {
-    text-decoration: none;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s;
-}
+    @import url('https://fonts.googleapis.com/css?family=Numans');
+    a {
+        text-decoration: none;
+        -webkit-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    .input-group {
+        position: relative;
+        padding: 5px;
+    }
+    
+    html,
+    body {
+        background-image: url('../images/bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+        font-family: 'Numans', sans-serif;
+    }
+    
+    .input-group input~span,
+    .input-group .spanstyle {
+        position: absolute;
+        padding-left: 60px;
+        top: 13px;
+        pointer-events: none;
+    }
+    
+    input:not(:-moz-placeholder-shown)+input~span,
+    input:not(:-moz-placeholder-shown)+.spanstyle {
+        opacity: 1;
+        transform: scale(.9) translateY(-135%) translateX(-10px);
+        color: white;
+    }
+    
+    input:not(:-ms-input-placeholder)+input~span,
+    input:not(:-ms-input-placeholder)+.spanstyle {
+        opacity: 1;
+        -ms-transform: scale(.9) translateY(-135%) translateX(-10px);
+        transform: scale(.9) translateY(-135%) translateX(-10px);
+        color: white;
+    }
+    /* input:not(:placeholder-shown)+input~span,
+    input:not(:placeholder-shown)+.spanstyle 
 
-a:hover {
-    text-decoration: underline;
-}
-
-.input-group {
-    position: relative;
-    padding: 5px;
-}
-
-html,
-body {
-    background-image: url('../images/bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    font-family: 'Numans', sans-serif;
-}
-
-.input-group input~span,
-.input-group .spanstyle {
-    position: absolute;
-    padding-left: 60px;
-    top: 13px;
-    pointer-events: none;
-}
-
-input:not(:-moz-placeholder-shown)+input~span,
-input:not(:-moz-placeholder-shown)+.spanstyle {
-    opacity: 1;
-    transform: scale(.9) translateY(-135%) translateX(-10px);
-    color: white;
-}
-
-input:not(:-ms-input-placeholder)+input~span,
-input:not(:-ms-input-placeholder)+.spanstyle {
-    opacity: 1;
-    -ms-transform: scale(.9) translateY(-135%) translateX(-10px);
-    transform: scale(.9) translateY(-135%) translateX(-10px);
-    color: white;
-}
-
-input:focus+input~span,
-input:not(:placeholder-shown)+input~span,
-input:focus+.spanstyle,
-input:not(:placeholder-shown)+.spanstyle {
-    opacity: 1;
-    -webkit-transform: scale(.9) translateY(-135%) translateX(-10px);
-    -ms-transform: scale(.9) translateY(-135%) translateX(-10px);
-    transform: scale(.9) translateY(-135%) translateX(-10px);
-    color: white;
-}
-
-.input-group input~span,
-.input-group .spanstyle,
-.input-group input {
-    -webkit-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-    -webkit-transition-timing-function: ease;
-    -o-transition-timing-function: ease;
-    transition-timing-function: ease;
-    -webkit-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-    -o-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-    color: #000;
-    opacity: 0.5;
-}
-
-.container {
-    height: 100vh;
-    -ms-flex-line-pack: center;
-    align-content: center;
-}
-
-.card {
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    box-shadow: 3px 1px 30px 3px rgba(0, 0, 0, 0.7);
-    -webkit-box-shadow: 3px 1px 30px 3px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 3px 1px 30px 3px rgba(0, 0, 0, 0.7);
-}
-
-.card-header h3 {
-    color: white;
-}
-
-.input-group-prepend span {
-    width: 50px;
-    background-color: #FFC312;
-    color: black;
-    border: 0 !important;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-input:focus {
-    outline: 0 0 0 0 !important;
-    -webkit-box-shadow: 0 0 0 0 !important;
-    box-shadow: 0 0 0 0 !important;
-}
-
-.actionbtn {
-    color: black;
-    background-color: #FFC312;
-    width: 100px;
-}
-
-.actionbtn:hover {
-    color: black;
-    background-color: white;
-}
-
-.links {
-    color: white;
-}
-
-.links a {
-    margin-left: 4px;
-}
-
-.password-invisible {
-    top: 25%;
-    z-index: 7;
-    right: 2%;
-    cursor: pointer;
-}
-
-.invalid-feedback {
-    font-size: 1.05rem;
-}
-
-.button-control {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-
-@media screen and (max-width: 768px) {
+    check value with javascript if !='' give spans d-none class (remove all input placeholders)
+    */
+    
+    input:focus+input~span,
+    input:focus+.spanstyle {
+        opacity: 1;
+        -webkit-transform: scale(.9) translateY(-135%) translateX(-10px);
+        -ms-transform: scale(.9) translateY(-135%) translateX(-10px);
+        transform: scale(.9) translateY(-135%) translateX(-10px);
+        color: white;
+    }
+    
+    .input-group input~span,
+    .input-group .spanstyle,
+    .input-group input {
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        -webkit-transition-timing-function: ease;
+        -o-transition-timing-function: ease;
+        transition-timing-function: ease;
+        -webkit-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        -o-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        color: #000;
+        transform: scale(1) translateY(0%) translateX(0px);
+        opacity: 0.5;
+    }
+    
+    .container {
+        height: 100vh;
+        -ms-flex-line-pack: center;
+        align-content: center;
+    }
+    
+    .card {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        box-shadow: 3px 1px 30px 3px rgba(0, 0, 0, 0.7);
+        -webkit-box-shadow: 3px 1px 30px 3px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 3px 1px 30px 3px rgba(0, 0, 0, 0.7);
+    }
+    
+    .card-header h3 {
+        color: white;
+    }
+    
+    .input-group-prepend span {
+        width: 50px;
+        background-color: #FFC312;
+        color: black;
+        border: 0 !important;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    
+    input:focus {
+        outline: 0 0 0 0 !important;
+        -webkit-box-shadow: 0 0 0 0 !important;
+        box-shadow: 0 0 0 0 !important;
+    }
+    
+    .actionbtn {
+        color: black;
+        background-color: #FFC312;
+        width: 100px;
+    }
+    
+    .actionbtn:hover {
+        color: black;
+        background-color: white;
+    }
+    
+    .links {
+        color: white;
+    }
+    
+    .links a {
+        margin-left: 4px;
+    }
+    
+    .password-invisible {
+        top: 25%;
+        z-index: 7;
+        right: 2%;
+        cursor: pointer;
+    }
+    
     .invalid-feedback {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
     }
-}
-
-@media screen and (max-width:500px) {
-    html {
-        font-size: 14px;
+    
+    .button-control {
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
     }
-    .invalid-feedback {
-        margin-top: 2.42rem;
+    
+    @media screen and (max-width: 768px) {
+        .invalid-feedback {
+            font-size: 1.2rem;
+        }
     }
-}
+    
+    @media screen and (max-width:500px) {
+        html {
+            font-size: 14px;
+        }
+        .invalid-feedback {
+            margin-top: 2.42rem;
+        }
+    }

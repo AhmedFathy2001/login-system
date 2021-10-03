@@ -12,8 +12,6 @@ let currentIndex;
 let sessionUser = localStorage.getItem('sessionUser') || sessionStorage.getItem('sessionUser');
 sessionUser == ('' || null) ? setTimeout(() => window.location.href = 'index.html', 1000) : sessionUser;
 
-// let likesCount = 0;
-// let likesArray = localStorage.getItem('likes') == null ? [] : JSON.parse(localStorage.getItem('likes'));
 
 //Displays data on site load
 if (postContent != []) {
@@ -70,14 +68,15 @@ function timeSince(date) {
 
 //Displays all posts from new to old
 function displayAllPosts() {
-    let posts = ``
+    let posts = ``;
+    let currentUser = localStorage.getItem("sessionUser")
     for (let i = postContent.length - 1; i >= 0; i--) {
 
         posts +=
             `
         <div class="p-2 post-container position-relative">
             <div class="position-relative">
-            <div class="icon-parent"> <i class="fas fa-ellipsis-h position-absolute icon"></i></div>
+            <div class="icon-parent">${currentUser == postContent[i].username ?'<i class="fas fa-ellipsis-h position-absolute icon"></i>':''  } </div>
             <ul class="position-absolute liststyle">
                 <li class="list-unstyled">
                     <a class="text-white-50 links">Delete post</a></li>
@@ -105,10 +104,7 @@ function like() {
             if (heart.classList.contains('is_animating')) {
                 heart.classList.remove('is_animating');
             } else {
-                heart.classList.add('is_animating');
-                // if (heart.classList.contains('is_animating')) {
-                //     isLiked()
-                // }
+                heart.classList.add('is_animating')
             }
         });
     });
@@ -149,7 +145,6 @@ function addDropDownListener() {
             e.stopPropagation();
             let parent = element.closest('div.post-container');
             currentIndex = parent.lastElementChild.innerHTML;
-            console.log(currentIndex);
             if (next.classList.contains('active')) {
                 next.classList.remove('active');
 
@@ -158,14 +153,6 @@ function addDropDownListener() {
 
     });
 }
-
-
-// function blurIcon() {
-//     dropdown.forEach(element => {
-//         let next = element.nextElementSibling;
-//         next.classList.remove('active')
-//     });
-// }
 
 //Closes the drop down of the post when clicked anywhere outside of it
 window.addEventListener('click', (e) => {
@@ -184,20 +171,7 @@ let mutationObserver = new MutationObserver((mutations) => {
     })
 });
 
-class Likes {
-    constructor(postID, likesCount) {
-        this.postID = postID;
-        this.likesCount = likesCount;
-    }
-}
 
-// function isLiked() {
-//     likesCount++
-//     let likes = new Likes(postID, likesCount);
-//     likesArray.push(likes)
-//     localStorage.setItem('likes', JSON.stringify(likesArray));
-//     displayAllPosts()
-// }
 
 //checks for changes in the main div
 mutationObserver.observe(target, {
@@ -224,19 +198,15 @@ function deleteModalTrigger() {
     });
 }
 
+//deletes posts
 deleteBtn.addEventListener('click', () => {
-    if (localStorage.getItem('sessionUser') != postContent[currentIndex].username) {
-        triggerEvent(document.getElementById('dismissBtn'), 'click');
-        alert('Cannot delete post that you didnt create')
-        return;
-    } else {
-        postContent.splice(currentIndex, 1);
-        localStorage.setItem('posts', JSON.stringify(postContent));
-        displayAllPosts();
-        triggerEvent(document.getElementById('dismissBtn'), 'click');
-    }
-});
+    postContent.splice(currentIndex, 1);
+    localStorage.setItem('posts', JSON.stringify(postContent));
+    displayAllPosts();
+    triggerEvent(document.getElementById('dismissBtn'), 'click');
 
+});
+//functions because of the need of mutationObserver
 like()
 addDropDownListener();
 deleteModalTrigger();
