@@ -9,6 +9,9 @@ let pass;
 let postContent = localStorage.getItem('posts') == null ? [] : JSON.parse(localStorage.getItem('posts'));
 let postID = localStorage.getItem('posts') == null ? 0 : JSON.parse(localStorage.getItem('posts'))[0].postID;
 let currentIndex;
+let sessionUser = localStorage.getItem('sessionUser') || sessionStorage.getItem('sessionUser');
+sessionUser == ('' || null) ? setTimeout(() => window.location.href = 'index.html', 1000) : sessionUser;
+
 // let likesCount = 0;
 // let likesArray = localStorage.getItem('likes') == null ? [] : JSON.parse(localStorage.getItem('likes'));
 
@@ -77,7 +80,7 @@ function displayAllPosts() {
             <div class="icon-parent"> <i class="fas fa-ellipsis-h position-absolute icon"></i></div>
             <ul class="position-absolute liststyle">
                 <li class="list-unstyled">
-                    <a class="text-white-50 links"> Delete post</a></li>
+                    <a class="text-white-50 links">Delete post</a></li>
             </ul>
             </div>
             <div class="heart position-absolute bottom-0 end-0"><span class="position-absolute likes d-none"></span></div>
@@ -146,6 +149,7 @@ function addDropDownListener() {
             e.stopPropagation();
             let parent = element.closest('div.post-container');
             currentIndex = parent.lastElementChild.innerHTML;
+            console.log(currentIndex);
             if (next.classList.contains('active')) {
                 next.classList.remove('active');
 
@@ -225,11 +229,12 @@ deleteBtn.addEventListener('click', () => {
         triggerEvent(document.getElementById('dismissBtn'), 'click');
         alert('Cannot delete post that you didnt create')
         return;
+    } else {
+        postContent.splice(currentIndex, 1);
+        localStorage.setItem('posts', JSON.stringify(postContent));
+        displayAllPosts();
+        triggerEvent(document.getElementById('dismissBtn'), 'click');
     }
-    postContent.splice(currentIndex, 1);
-    localStorage.setItem('posts', JSON.stringify(postContent));
-    displayAllPosts();
-    triggerEvent(document.getElementById('dismissBtn'), 'click');
 });
 
 like()

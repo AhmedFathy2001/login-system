@@ -50,10 +50,12 @@ function validate(item, type) {
             isInvalid ? this.username.classList.add('is-invalid') : this.username.classList.remove('is-invalid');
             break;
         case "email":
-            if (isInvalid) {
+            if (!isInvalid) {
+                if (emailValidation(email.value)) this.email.classList.remove('is-invalid');
+            } else {
                 this.email.classList.add('is-invalid');
                 this.emailFeedback.innerText = 'This email is taken, please enter another email.';
-            } else this.email.classList.remove('is-invalid');
+            }
             break;
     }
     return !isInvalid;
@@ -92,11 +94,9 @@ function passwordCheck(password, passwordConfirm) {
 function registration() {
     if (isEmptyy()) {
         let x = validate(username.value, 'username');
-        let y = emailValidation(email.value);
         let z = validate(email.value, 'email');
         let b = passwordCheck(password.value, passwordConfirmation.value);
-        console.log(x, y, z, b);
-        if (x && y && z && b) {
+        if (x && z && b) {
             if (validate(username.value, 'username') && emailValidation(email.value) && validate(email.value, 'email') && passwordCheck(password.value, passwordConfirmation.value)) {
                 allUsers()
                 pass = localStorage.setItem('pass', 'Registration complete, login now!');
