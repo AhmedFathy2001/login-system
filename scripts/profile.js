@@ -25,10 +25,10 @@ if (pass == 'Password has been successfully changed!') {
     })
 })
 
-//cuts the string at the length of 8 (prevents long usernames from overflowing)
+//cuts the string at the length of 12 (prevents long usernames from overflowing)
 function truncate(input) {
-    if (input.length > 8) {
-        return input.substring(0, 8) + '...';
+    if (input.length > 12) {
+        return input.substring(0, 12) + '...';
     }
     return input;
 };
