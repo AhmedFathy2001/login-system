@@ -8,7 +8,7 @@ const dismissBtn = document.getElementById('dismissBtn');
 let pass = localStorage.getItem('pass');
 //Checks if there's an existing session, if there is it'll redirect to the home page
 let sessionUser = localStorage.getItem('sessionUser') || sessionStorage.getItem('sessionUser');
-sessionUser == ('' || null) ? setTimeout(() => window.location.href = 'index.html', 1000) : h1.innerHTML = "Welcome " + sessionUser;
+sessionUser == ('' || null) ? setTimeout(() => window.location.href = 'index.html', 1000) : h1.innerHTML = "Welcome " + truncate(sessionUser);
 let users = JSON.parse(localStorage.getItem("users"))
 
 
@@ -25,6 +25,13 @@ if (pass == 'Password has been successfully changed!') {
     })
 })
 
+//cuts the string at the length of 8 (prevents long usernames from overflowing)
+function truncate(input) {
+    if (input.length > 8) {
+        return input.substring(0, 8) + '...';
+    }
+    return input;
+};
 
 function modalAdjust(header, text, dismissText, styling) {
     modalHeader.innerText = `${header}`;

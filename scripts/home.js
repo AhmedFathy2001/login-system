@@ -65,9 +65,7 @@ function timeSince(date) {
     return Math.floor(seconds) + "s";
 }
 
-
-let usernameCheck;
-
+//cuts the string at the length of 8 (prevents long usernames from overflowing)
 function truncate(input) {
     if (input.length > 8) {
         return input.substring(0, 8) + '...';
