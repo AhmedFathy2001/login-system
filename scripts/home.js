@@ -145,13 +145,20 @@ logout.addEventListener('click', () => {
 
 //Adds a click listener to all post dropdowns
 function addDropDownListener() {
-    let dropdown = document.querySelectorAll('div.icon-parent')
+    let dropdown = document.querySelectorAll('div.icon-parent');
     dropdown.forEach(element => {
         let next = element.nextElementSibling;
         element.addEventListener('click', (e) => {
             e.stopPropagation();
             let parent = element.closest('div.post-container');
             currentIndex = parent.lastElementChild.innerHTML;
+            let dotsData = document.getElementsByClassName("liststyle")
+            for (let i = 0; i < dotsData.length; i++) {
+                if (dotsData[i].classList.contains("active")) {
+                    dotsData[i].classList.remove("active")
+                }
+                //  if (dotsData[i].classList)
+            }
             if (next.classList.contains('active')) {
                 next.classList.remove('active');
 
